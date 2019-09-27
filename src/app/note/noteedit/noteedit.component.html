@@ -1,0 +1,21 @@
+<div *ngIf="user.is_superuser; else elseBlock" class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <h3 [ngStyle]="{'margin-bottom': '10px'}">Update Note</h3>
+
+      <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Note</label>
+          <textarea type="text" formControlName="note" class="form-control" rows="5"></textarea>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-block text-uppercase" [disabled]="!noteForm.valid" type="submit">Update</button>
+          <button class="btn btn-sm btn-light btn-block text-uppercase" (click)="goBack()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <h3 class="else">No Authentication for This Page!</h3>
+</ng-template>

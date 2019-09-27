@@ -1,0 +1,98 @@
+<app-nav></app-nav>
+<div *ngIf="user.is_superuser; else elseBlock" class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <h3 [ngStyle]="{'margin-bottom': '10px'}">Update Service Provider</h3>
+
+      <form [formGroup]="providerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>*Name</label>
+          <input type="text" [class.is-invalid]="providerForm.controls.name.invalid && providerForm.controls.name.touched" formControlName="name" class="form-control">
+          <div *ngIf="providerForm.controls.name.invalid && providerForm.controls.name.touched">
+            <small class="text-danger" *ngIf="providerForm.controls.name.errors?.required">Name is required</small>
+          </div>
+          <label>*Address</label>
+          <input type="text" [class.is-invalid]="providerForm.controls.address.invalid && providerForm.controls.address.touched" formControlName="address" class="form-control">
+          <div *ngIf="providerForm.controls.address.invalid && providerForm.controls.address.touched">
+            <small class="text-danger" *ngIf="providerForm.controls.address.errors?.required">Address is required</small>
+          </div>
+          <label>*Country</label>
+          <input type="text" [class.is-invalid]="providerForm.controls.country.invalid && providerForm.controls.country.touched" formControlName="country" class="form-control">
+          <div *ngIf="providerForm.controls.country.invalid && providerForm.controls.country.touched">
+            <small class="text-danger" *ngIf="providerForm.controls.country.errors?.required">Country is required</small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>*City</label>
+              <input type="text" [class.is-invalid]="providerForm.controls.city.invalid && providerForm.controls.city.touched" formControlName="city" class="form-control">
+              <div *ngIf="providerForm.controls.city.invalid && providerForm.controls.city.touched">
+                <small class="text-danger" *ngIf="providerForm.controls.city.errors?.required">City is required</small>
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <label>*State</label>
+              <input type="text" [class.is-invalid]="providerForm.controls.state.invalid && providerForm.controls.state.touched" formControlName="state" class="form-control">
+              <div *ngIf="providerForm.controls.state.invalid && providerForm.controls.state.touched">
+                <small class="text-danger" *ngIf="providerForm.controls.state.errors?.required">State is required</small>
+              </div>
+            </div>
+            <div class="form-group col-md-3">
+              <label>*Zip</label>
+              <input type="text" [class.is-invalid]="providerForm.controls.zip.invalid && providerForm.controls.zip.touched" formControlName="zip" class="form-control">
+              <div *ngIf="providerForm.controls.zip.invalid && providerForm.controls.zip.touched">
+                <small class="text-danger" *ngIf="providerForm.controls.zip.errors?.required">Zip is required</small>
+                <small class="text-danger" *ngIf="providerForm.controls.zip.errors?.pattern">Zip must be 5 digits</small>
+              </div>
+            </div>
+          </div>
+
+          <label>Phone</label>
+          <input type="tel" [class.is-invalid]="providerForm.controls.phone.invalid" formControlName="phone" class="form-control">
+          <div *ngIf="providerForm.controls.phone.invalid">
+            <small class="text-danger" *ngIf="providerForm.controls.phone.errors?.pattern">Phone Number must be 10 digits</small>
+          </div>
+          <label>Fax</label>
+          <input type="tel" [class.is-invalid]="providerForm.controls.fax.invalid" formControlName="fax" class="form-control">
+          <div *ngIf="providerForm.controls.fax.invalid">
+            <small class="text-danger" *ngIf="providerForm.controls.fax.errors?.pattern">Fax must be 10 digits</small>
+          </div>
+          <label>Toll Free</label>
+          <input type="tel" [class.is-invalid]="providerForm.controls.toll_free.invalid" formControlName="toll_free" class="form-control">
+          <div *ngIf="providerForm.controls.toll_free.invalid">
+            <small class="text-danger" *ngIf="providerForm.controls.toll_free.errors?.pattern">Toll free must be 10 digits</small>
+          </div>
+          <label>Email</label>
+          <input type="email" formControlName="email" class="form-control">
+          <div *ngIf="providerForm.controls.email.invalid">
+            <small class="text-danger" *ngIf="providerForm.controls.email.errors?.pattern">Email must be in right format</small>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>*Start Time:</label>
+              <input type="time" required formControlName="start_time" class="form-control">
+              <div *ngIf="providerForm.controls.start_time.invalid && providerForm.controls.start_time.touched">
+                <small class="text-danger" *ngIf="providerForm.controls.start_time.errors?.required">Start time is required</small>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label>*End Time:</label>
+              <input type="time" required formControlName="end_time" class="form-control">
+              <div *ngIf="providerForm.controls.end_time.invalid && providerForm.controls.end_time.touched">
+                <small class="text-danger" *ngIf="providerForm.controls.end_time.errors?.required">End time is required</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block text-uppercase" [disabled]="!providerForm.valid" type="submit">Update</button>
+        <button class="btn btn-sm btn-light btn-block text-uppercase" (click)="goBack()">Cancel</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <h3 class="else">No Authentication for This Page!</h3>
+</ng-template>

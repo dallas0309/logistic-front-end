@@ -1,0 +1,9 @@
+.provider_list {
+  width: 95%;
+  margin: 10px auto;
+}
+
+.provider_add {
+  float: right;
+  margin-right: 30px;
+}

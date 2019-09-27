@@ -1,0 +1,28 @@
+.header {
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper img:first-child {
+  position: absolute;
+  width: 100%;
+  opacity: 1;
+  animation: img-1 6s infinite;
+}
+
+.wrapper img:last-child {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  animation: img-2 6s infinite;
+}

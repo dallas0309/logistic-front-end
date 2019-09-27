@@ -1,0 +1,29 @@
+<div class="title">
+  <span>Contact</span>
+  <div *ngIf="user.is_superuser" class="btn-group">
+    <a class="dropdown-item" (click)="add()">Add</a>
+  </div>
+</div>
+<div class="container">
+<ng-container *ngFor = "let contact of contacts; let i = index">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        {{contact.first_name}} {{contact.last_name}}
+        <button *ngIf="user.is_superuser" class="btn btn-link btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" (click)="edit(contact)">Edit</a>
+          <a class="dropdown-item" (click)="confirmDelete(contact, i)" >Remove</a>
+        </div>
+      </div>
+      <div class = "card-text">
+        <p><span>Mobile:</span> {{contact.mobile}}</p>
+        <p><span>Office Phone:</span> {{contact.phone}}</p>
+        <p><span>Email:</span> {{contact.email}}</p>
+      </div>
+    </div>
+  </div>
+</ng-container>
+</div>

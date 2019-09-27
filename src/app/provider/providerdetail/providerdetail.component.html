@@ -1,0 +1,44 @@
+<app-nav></app-nav>
+
+<router-outlet></router-outlet>
+
+<div class="row">
+  <div class="col-75">
+    <div class="title">
+      <span>Provider Detail</span>
+      <div class="btn-group" *ngIf="user.is_superuser">
+        <button class="btn btn-link btn-sm dropdown-toggle" id="action" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" (click)="edit(provider)">Edit</button>
+          <button class="dropdown-item" (click)="confirmDelete(provider)">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p><span>provider Id:</span> {{provider.id}}</p>
+      <p><span>Name:</span> {{provider.name | uppercase}}</p>
+      <p><span>Address:</span> {{provider.address}}</p>
+      <p><span>Country:</span> {{provider.country}}</p>
+      <p><span>City:</span> {{provider.city}} </p>
+      <p><span>State:</span> {{provider.state | uppercase}} &nbsp;&nbsp;&nbsp;&nbsp;
+         <span>Zip:</span> {{provider.zip}}</p>
+      <p><span>Phone:</span> {{provider.phone}}</p>
+      <p><span>Fax:</span> {{provider.fax}}</p>
+      <p><span>Toll Free:</span> {{provider.toll_free}}</p>
+      <p><span>Email:</span> {{provider.email}}</p>
+      <p><span>Business Hours:</span> {{provider.start_time}} - {{provider.end_time}}</p>
+      <p><span>User:</span> {{provider.user}}</p>
+    </div>
+  </div>
+
+  <div class="col-50">
+      <app-notelist></app-notelist>
+  </div>
+
+  <div class="col-25">
+      <app-contactlist></app-contactlist>
+  </div>
+
+</div>

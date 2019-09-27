@@ -1,0 +1,63 @@
+<app-nav></app-nav>
+<div *ngIf="user.is_superuser; else elseBlock" class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <h3 [ngStyle]="{'margin-bottom': '10px'}">Update Contact</h3>
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" formControlName="title" class="form-control">
+          <label>*First Name</label>
+          <input type="text" [class.is-invalid]="contactForm.controls.first_name.invalid && contactForm.controls.first_name.touched" formControlName="first_name" class="form-control">
+          <div *ngIf="contactForm.controls.first_name.invalid && contactForm.controls.first_name.touched">
+            <small class="text-danger" *ngIf="contactForm.controls.first_name.errors?.required">First Name is required</small>
+          </div>
+          <label>*Last Name</label>
+          <input type="text" [class.is-invalid]="contactForm.controls.last_name.invalid && contactForm.controls.last_name.touched" formControlName="last_name" class="form-control">
+          <div *ngIf="contactForm.controls.last_name.invalid && contactForm.controls.last_name.touched">
+            <small class="text-danger" *ngIf="contactForm.controls.last_name.errors?.required">Last Name is required</small>
+          </div>
+
+          <label>*Mobile Number</label>
+          <input type="tel" [class.is-invalid]="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched" formControlName="mobile" class="form-control">
+          <div *ngIf="contactForm.controls.mobile.invalid && contactForm.controls.mobile.touched">
+            <small class="text-danger" *ngIf="contactForm.controls.mobile.errors?.required">Mobile Number is required</small>
+            <small class="text-danger" *ngIf="contactForm.controls.mobile.errors?.pattern">Mobile Number must be 10 digits</small>
+          </div>
+
+          <label>*Office Number</label>
+          <input type="tel" [class.is-invalid]="contactForm.controls.phone.invalid && contactForm.controls.phone.touched" formControlName="phone" class="form-control">
+          <div *ngIf="contactForm.controls.phone.invalid && contactForm.controls.phone.touched">
+            <small class="text-danger" *ngIf="contactForm.controls.phone.errors?.required"> Office Phone is required</small>
+            <small class="text-danger" *ngIf="contactForm.controls.phone.errors?.pattern">Office Phone must be 10 digits</small>
+          </div>
+
+          <label>Fax</label>
+          <input type="tel" [class.is-invalid]="contactForm.controls.fax.invalid" formControlName="fax" class="form-control">
+          <div *ngIf="contactForm.controls.fax.invalid">
+            <small class="text-danger" *ngIf="contactForm.controls.fax.errors?.pattern">Fax must be 10 digits</small>
+          </div>
+          <label>Toll Free</label>
+          <input type="tel" [class.is-invalid]="contactForm.controls.toll_free.invalid" formControlName="toll_free" class="form-control">
+          <div *ngIf="contactForm.controls.toll_free.invalid">
+            <small class="text-danger" *ngIf="contactForm.controls.toll_free.errors?.pattern">Toll free must be 10 digits</small>
+          </div>
+          <label>Email</label>
+          <input type="email" formControlName="email" class="form-control">
+          <div *ngIf="contactForm.controls.email.invalid">
+            <small class="text-danger" *ngIf="contactForm.controls.email.errors?.pattern">Email must be in right format</small>
+          </div>
+
+        </div>
+        <div>
+          <button class="btn btn-primary btn-block text-uppercase" [disabled]="!contactForm.valid" type="submit">Update</button>
+          <button class="btn btn-sm btn-light btn-block text-uppercase" (click)="goBack()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <h3 class="else">No Authentication for This Page!</h3>
+</ng-template>

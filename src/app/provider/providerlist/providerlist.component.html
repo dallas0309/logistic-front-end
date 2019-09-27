@@ -1,0 +1,32 @@
+<app-nav></app-nav>
+<h2 [ngStyle]="{'text-align':'center', 'margin':'20px auto'}">Provider List</h2>
+<h3>{{errorMsg}}</h3>
+<div class="provider_list">
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Country</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Business Hour</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let provider of providers; let i = index" (click)="detail(provider)">
+    <td>{{provider.id}}</td>
+    <td>{{provider.name | uppercase}}</td>
+    <td>{{provider.address}}, {{provider.city}}, {{provider.state}}, {{provider.zip}}</td>
+    <td>{{provider.country}}</td>
+    <td>{{provider.phone}}</td>
+    <td>{{provider.email}}</td>
+    <td>{{provider.start_time}} - {{provider.end_time}}</td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="user.is_superuser" class="provider_add">
+  <button class="btn btn-primary" (click)="create()">Add</button>
+</div>
+</div>
