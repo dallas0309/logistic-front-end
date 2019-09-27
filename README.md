@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # LogisticApp
 
@@ -27,4 +28,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+=======
+>>>>>>> 7ef6dc6179c77fde484efa22810461f7a86d276a
 # logistic-front-end
